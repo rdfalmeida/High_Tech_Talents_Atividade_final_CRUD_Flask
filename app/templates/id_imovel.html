@@ -1,0 +1,31 @@
+<!-- template para função visualização -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Visualizar Imóvel</title>
+        <a href="{{ url_for('index') }}">Voltar</a>
+    </head>
+<!-- Implementei a visualização do imovel para, por exemplo, formatar para impressão. -->
+    <body>  
+        <h3>Visualizar Imóvel</h3>
+        
+        <form action = "" method = "POST">
+            Tipo: {{ imovel.tipo }}<br>
+            CEP: {{ imovel.cep }}<br>
+            Endereço {{ imovel.endereco }}<br>
+            Área {{ imovel.area }}<br>
+            <a href="{{ url_for('show_imovel') }}">Voltar</a>
+            <a href="{{ url_for('update_imovel', id=imovel.id) }}">Atualizar</a>
+            <a href="{{ url_for('delete_imovel', id=imovel.id) }}">Excluir</a>
+        </form>
+        <!-- Espaço para mensagens. Basicamente aqui aparecerá informações de sucesso da atualização
+ou exlusão de um objeto. -->
+        <h3>
+            {%- for category, message in get_flashed_messages(with_categories=true) %}
+                    {{ message }}
+            {%- endfor %}
+        </h3>
+    </body>
+</html>

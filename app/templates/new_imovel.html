@@ -1,0 +1,32 @@
+<!-- template para função cadastro -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Novo Imóvel</title>
+    </head>
+    <body>
+            <h3>Adicione um Imóvel</h3>
+
+        {%- for category, message in get_flashed_messages(with_categories=true) %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {%- endfor %}
+
+        <form action="{{ request.path }}" method="post">
+            <label for="tipo">Tipo</label><br>
+            <input type ="text" name="tipo" placeholder="Tipo"><br>
+            <label for="cep">CEP</label><br>
+            <input type="text" name="cep" placeholder="CEP"><br>
+            <label for="endereco">Endereço</label><br>
+            <input type="text" name="endereco" placeholder="Endereço"><br>
+            <label for="area">Area</label><br>
+            <input type="text" name="area" placeholder="Area"><br><br>
+            <input type="submit" value="Submit">
+            <input type="reset">
+            <a href="{{ url_for('show_imovel') }}">Cancelar</a>
+        </form>
+    </body>
+</html>

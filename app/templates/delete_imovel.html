@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Deletar Imóvel</title>
+    </head>
+<!-- Aqui podemos implementar um avisualização dos dados antes de realmente excluir.
+Esses dados já foram vistos na tela "show_imovel", dependerá da necessidade. -->
+    <body>
+        <form action='' method="post">
+            <h3>
+                Tem certeza que deseja excluir esse imóvel?<br>
+            </h3>
+            <input type="submit" value="Excluir">
+            <a href="{{ url_for('show_imovel') }}">Cancelar</a>
+        </form>
+    </body>
+</html>

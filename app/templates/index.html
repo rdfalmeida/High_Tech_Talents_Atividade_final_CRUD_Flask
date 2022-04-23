@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Aqui incluiríamos também as infomrações de CSS e JavaScript, SEO...
+        e nos outros htmls também conforme necessário. -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menu Principal</title>
+    </head>
+    <body>
+        <!-- Simples listagem dos módulos. -->
+        <h3>
+            <a href="{{ url_for('show_cliente') }}">Módulo Clientes</a>
+        </h3>
+        <h3>
+            <a href="{{ url_for('show_contrato') }}">Módulo Contratos</a>
+        </h3>
+        <h3>
+            <a href="{{ url_for('show_imovel') }}">Módulo Imóveis</a>
+        </h3>
+<!-- Espaço para mensagens que podem ser implementadas a posteriori. -->
+        <h3>
+            {%- for category, message in get_flashed_messages(with_categories=true) %}
+                    {{ message }}
+            {%- endfor %}
+        </h3>
+    </body>
+</html>

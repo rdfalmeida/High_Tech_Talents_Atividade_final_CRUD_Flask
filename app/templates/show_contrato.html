@@ -1,0 +1,59 @@
+<!-- template para função visualização -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Contratos</title>
+        <a href="{{ url_for('index') }}">Voltar</a>
+    </head>
+<!-- Podemos também implementar a visualização de um objeto em particular caso requerido. -->
+    <body>  
+        <h3>Lista de Contratos</h3>
+        <h4>
+            <!-- Lista só para imaginar as possibilidades de design. -->
+            <ul>
+            <li><a href="{{ url_for('show_contrato') }}">Atualizar Lista</a></li>
+            <li><a href="{{ url_for('new_contrato') }}">Adicionar Contrato</a></li>
+            </ul>
+        </h4>   
+        <table>
+            <!-- Formatação da tabela de dados do objeto, incluindo opção editar e excluir -->
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Locador</th>
+                    <th>Locatário</th>
+                    <th>Imóvel Objeto</th>
+                    <th>Vigência</th>
+                    <th>Termos</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for contrato in contrato %}
+                <tr>
+                    <td>{{ contrato.id }}</td>
+                    <td>{{ contrato.locador }}</td>
+                    <td>{{ contrato.locatario }}</td>
+                    <td>{{ contrato.imovel_contratado }}</td>
+                    <td>{{ contrato.vigencia_contrato }}</td>
+                    <td>{{ contrato.termos }}</td>
+                    <th><a href="{{ url_for('id_contrato', id=contrato.id) }}">Detalhar</a></th>
+                    <th><a href="{{ url_for('update_contrato', id=contrato.id) }}">Atualizar</a></th>
+                    <th><a href="{{ url_for('delete_contrato', id=contrato.id) }}">Excluir</a></th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+<!-- Espaço para mensagens. Basicamente aqui aparecerá informações de sucesso da atualização
+ou exlusão de um objeto. -->
+        <h3>
+            {%- for category, message in get_flashed_messages(with_categories=true) %}
+                    {{ message }}
+            {%- endfor %}
+        </h3>
+    </body>
+</html>

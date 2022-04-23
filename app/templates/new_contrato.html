@@ -1,0 +1,34 @@
+<!-- template para função cadastro -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Novo Contrato</title>
+    </head>
+    <body>
+            <h3>Adicione um Contrato</h3>
+
+        {%- for category, message in get_flashed_messages(with_categories=true) %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {%- endfor %}
+
+        <form action="{{ request.path }}" method="post">
+            <label for="locador">Locador</label><br>
+            <input type="text" name="locador" placeholder="Locador"><br>
+            <label for="locatario">Locatário</label><br>
+            <input type="text" name="locatario" placeholder="Locatário"><br>
+            <label for="imovel_contratado">Imóvel Contratado</label><br>
+            <input type="text" name="imovel_contratado" placeholder="Imóvel Contratado"><br>
+            <label for="vigencia_contrato">Vigência do Contrato</label><br>
+            <input type="text" name="vigencia_contrato" placeholder="Vigência do Contrato"><br>
+            <label for="termos">Termos do Contrato</label><br>
+            <input type="text" name="termos" placeholder="Termos do Contrato"><br><br>
+            <input type="submit" value="Submit">
+            <input type="reset">
+            <a href="{{ url_for('show_contrato') }}">Cancelar</a>
+        </form>
+    </body>
+</html>

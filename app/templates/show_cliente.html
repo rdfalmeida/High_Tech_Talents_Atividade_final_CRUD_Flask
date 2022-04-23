@@ -1,0 +1,58 @@
+<!-- template para função visualização -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Clientes</title>
+        <a href="{{ url_for('index') }}">Voltar</a>
+    </head>
+<!-- Podemos também implementar a visualização de um objeto em particular caso requerido. -->
+    <body>  
+        <h3>Lista de Clientes</h3>
+        <h4>
+            <!-- Lista só para imaginar as possibilidades de design. -->
+            <ul>
+            <li><a href="{{ url_for('show_cliente') }}">Atualizar Lista</a></li>
+            <li><a href="{{ url_for('new_cliente') }}">Adicionar Cliente</a></li>
+            </ul>
+        </h4>   
+        <table>
+            <!-- Formatação da tabela de dados do objeto, incluindo opção editar e excluir -->
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Documento</th>
+                    <th>Imóveis Próprios</th>
+                    <th>Imóveis Alugados</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+<!-- Feito pensando que só valer uma entidade para cada contrato, ou seja, cada contrato teria apenas um locador,
+apenas um locatário e apenas um imóvel, o que pode ser alterado. -->
+            <tbody>
+                {% for cliente in cliente %}
+                <tr>
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.documento }}</td>
+                    <td>{{ cliente.imoveis_proprios }}</td>
+                    <td>{{ cliente.imoveis_em_locacao }}</td>
+                    <th><a href="{{ url_for('id_cliente', id=cliente.id) }}">Detalhar</a></th>
+                    <th><a href="{{ url_for('update_cliente', id=cliente.id) }}">Atualizar</a></th>
+                    <th><a href="{{ url_for('delete_cliente', id=cliente.id) }}">Excluir</a></th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+<!-- Espaço para mensagens. Basicamente aqui aparecerá informações de sucesso da atualização
+ou exlusão de um objeto. -->
+        <h3>
+            {%- for category, message in get_flashed_messages(with_categories=true) %}
+                    {{ message }}
+            {%- endfor %}
+        </h3>
+    </body>
+</html>
