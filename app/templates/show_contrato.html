@@ -51,9 +51,9 @@
 <!-- Espaço para mensagens. Basicamente aqui aparecerá informações de sucesso da atualização
 ou exlusão de um objeto. -->
         <h3>
-            {%- for category, message in get_flashed_messages(with_categories=true) %}
+            {% for category, message in get_flashed_messages(with_categories=true) %}
                     {{ message }}
-            {%- endfor %}
+            {% endfor %}
         </h3>
     </body>
 </html>
