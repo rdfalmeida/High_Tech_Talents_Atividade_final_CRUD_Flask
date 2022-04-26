@@ -25,4 +25,4 @@ from routes.routes_imovel import *
 from routes.routes_cliente import *
 from routes.routes_contrato import *
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
